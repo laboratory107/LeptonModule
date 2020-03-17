@@ -37,6 +37,7 @@ public slots:
 signals:
   void updateText(QString);
   void updateImage(QImage);
+  void UpdateTemperature(float);
 
 private:
 

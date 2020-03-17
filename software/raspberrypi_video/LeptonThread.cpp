@@ -233,7 +233,8 @@ void LeptonThread::run()
 
 				//flip the MSB and LSB at the last second
 				valueFrameBuffer = (shelf[iSegment - 1][i*2] << 8) + shelf[iSegment - 1][i*2+1];
-				if (valueFrameBuffer == 0) {
+
+                if (valueFrameBuffer == 0) {
 					// Why this value is 0?
 					n_zero_value_drop_frame++;
 					if ((n_zero_value_drop_frame % 12) == 0) {
@@ -244,7 +245,8 @@ void LeptonThread::run()
 
 				//
 				value = (valueFrameBuffer - minValue) * scale;
-				int ofs_r = 3 * value + 0; if (colormapSize <= ofs_r) ofs_r = colormapSize - 1;
+                emit UpdateTemperature(value);
+                int ofs_r = 3 * value + 0; if (colormapSize <= ofs_r) ofs_r = colormapSize - 1;
 				int ofs_g = 3 * value + 1; if (colormapSize <= ofs_g) ofs_g = colormapSize - 1;
 				int ofs_b = 3 * value + 2; if (colormapSize <= ofs_b) ofs_b = colormapSize - 1;
 				color = qRgb(colormap[ofs_r], colormap[ofs_g], colormap[ofs_b]);

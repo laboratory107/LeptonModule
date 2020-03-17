@@ -12,6 +12,7 @@
 #include "LeptonThread.h"
 #include "MyLabel.h"
 #include "ui_Sucelje.h"
+#include "tempmanager.h"
 
 void printUsage(char *cmd) {
         char *cmdname = basename(cmd);
@@ -106,7 +107,9 @@ int main( int argc, char **argv )
 
     Ui::Form ui;
     ui.setupUi(myWidget);
-    ui.Status->setText("blaaaaaaaaaa");
+    TempManager tmanager(ui);
+
+    //ui.Status->setText("blaaaaaaaaaa");
     //myWidget->setGeometry(400, 300, 340, 290);
 
     //create an image placeholder for myLabel
@@ -141,6 +144,7 @@ int main( int argc, char **argv )
 	if (0 <= rangeMin) thread->useRangeMinValue(rangeMin);
 	if (0 <= rangeMax) thread->useRangeMaxValue(rangeMax);
 	QObject::connect(thread, SIGNAL(updateImage(QImage)), &myLabel, SLOT(setImage(QImage)));
+    QObject::connect(thread, SIGNAL(UpdateTemperature(float)), &tmanager, SLOT(UpdateTemperature(float)));
 	
 	//connect ffc button to the thread's ffc action
 	QObject::connect(button1, SIGNAL(clicked()), thread, SLOT(performFFC()));

@@ -5,7 +5,9 @@
 class TempManager
 {
 public:
-    TempManager();
+    TempManager(Ui::Form ui);
+public slots:
+    void UpdateTemperature(float value);
 };
 
 #endif // TEMPMANAGER_H
