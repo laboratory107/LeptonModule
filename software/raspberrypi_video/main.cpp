@@ -11,6 +11,7 @@
 
 #include "LeptonThread.h"
 #include "MyLabel.h"
+#include "ui_Sucelje.h"
 
 void printUsage(char *cmd) {
         char *cmdname = basename(cmd);
@@ -102,9 +103,13 @@ int main( int argc, char **argv )
 	QApplication a( argc, argv );
 	
 	QWidget *myWidget = new QWidget;
-	myWidget->setGeometry(400, 300, 340, 290);
 
-	//create an image placeholder for myLabel
+    Ui::Form ui;
+    ui.setupUi(myWidget);
+    ui.Status->setText("blaaaaaaaaaa");
+    //myWidget->setGeometry(400, 300, 340, 290);
+
+    //create an image placeholder for myLabel
 	//fill the top left corner with red, just bcuz
 	QImage myImage;
 	myImage = QImage(320, 240, QImage::Format_RGB888);
@@ -121,8 +126,9 @@ int main( int argc, char **argv )
 	myLabel.setPixmap(QPixmap::fromImage(myImage));
 
 	//create a FFC button
-	QPushButton *button1 = new QPushButton("Perform FFC", myWidget);
+    QPushButton *button1 = new QPushButton("Perform FFC", myWidget);
 	button1->setGeometry(320/2-50, 290-35, 100, 30);
+
 
 	//create a thread to gather SPI data
 	//when the thread emits updateImage, the label should update its image accordingly

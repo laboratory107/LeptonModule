@@ -20,11 +20,16 @@ DESTDIR=.
 OBJECTS_DIR=gen_objs
 MOC_DIR=gen_mocs
 
-HEADERS += *.h
+HEADERS += *.h \
+    tempmanager.h
 
-SOURCES += *.cpp
+SOURCES += *.cpp \
+    tempmanager.cpp
 
 unix:LIBS += -L$${RPI_LIBS}/$${LEPTONSDK}/Debug -lLEPTON_SDK
 
 unix:QMAKE_CLEAN += -r $(OBJECTS_DIR) $${MOC_DIR}
+
+FORMS += \
+    Sucelje.ui
 
