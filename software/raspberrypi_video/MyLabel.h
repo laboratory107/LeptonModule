@@ -4,21 +4,24 @@
 #include <QtCore>
 #include <QWidget>
 #include <QLabel>
-
+#include "ui_Sucelje.h"
 
 //we extend QLabel to give it an extra slot, setImage
 //this is because we can't pass a QPixmap from our thread
-//so we have to pass a QImage and turn the QImage into a QPixmap on our end
+//so we have to pass a QImage and turn the QImage into a QPixmap on our end.
 
 class MyLabel : public QLabel {
   Q_OBJECT;
 
   public:
-    MyLabel(QWidget *parent = 0);
+    MyLabel(QWidget *parent = 0, Ui::Form ui);
     ~MyLabel();
+  private: Ui::Form ui;
 
   public slots:
     void setImage(QImage);
+    void UpdateTemperature(float value);
+
 };
 
 #endif
