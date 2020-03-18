@@ -14,7 +14,7 @@ class MyLabel : public QLabel {
   Q_OBJECT;
 
   public:
-    MyLabel(QWidget *parent = 0, Ui::Form ui);
+    MyLabel(Ui::Form ui, QWidget *parent = 0 );
     ~MyLabel();
   private: Ui::Form ui;
 
