@@ -124,7 +124,8 @@ int main( int argc, char **argv )
 	}
 
 	//create a label, and set it's image to the placeholder
-    MyLabel myLabel(myWidget,ui);
+    MyLabel myLabel(ui, myWidget);
+
 	myLabel.setGeometry(10, 10, 320, 240);
 	myLabel.setPixmap(QPixmap::fromImage(myImage));
 

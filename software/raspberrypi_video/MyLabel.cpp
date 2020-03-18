@@ -1,6 +1,6 @@
 #include "MyLabel.h"
 
-MyLabel::MyLabel(QWidget *parent, Ui::Form ui) : QLabel(parent)
+MyLabel::MyLabel(Ui::Form ui, QWidget *parent ) : QLabel(parent)
 {
     this->ui = ui;
 }
