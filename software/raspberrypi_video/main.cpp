@@ -107,6 +107,8 @@ int main( int argc, char **argv )
 
     Ui::Form ui;
     ui.setupUi(myWidget);
+    myWidget->showFullScreen();
+    //QMainWindow::showFullScreen();
     //TempManager tmanager(ui); .
 
 
