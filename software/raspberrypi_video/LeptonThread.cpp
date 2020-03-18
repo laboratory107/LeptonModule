@@ -268,6 +268,7 @@ void LeptonThread::run()
 		}
 
 		//lets emit the signal for update
+        emit UpdateTemperature(value);
 		emit updateImage(myImage);
 	}
 	
