@@ -31,3 +31,6 @@ unix:QMAKE_CLEAN += -r $(OBJECTS_DIR) $${MOC_DIR}
 FORMS += \
     Sucelje.ui
 
+DISTFILES += \
+    skripta.sh
+
