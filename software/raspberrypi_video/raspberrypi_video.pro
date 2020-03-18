@@ -20,11 +20,9 @@ DESTDIR=.
 OBJECTS_DIR=gen_objs
 MOC_DIR=gen_mocs
 
-HEADERS += *.h \
-    tempmanager.h
+HEADERS += *.h
 
-SOURCES += *.cpp \
-    tempmanager.cpp
+SOURCES += *.cpp
 
 unix:LIBS += -L$${RPI_LIBS}/$${LEPTONSDK}/Debug -lLEPTON_SDK
 
