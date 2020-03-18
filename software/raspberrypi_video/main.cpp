@@ -107,7 +107,7 @@ int main( int argc, char **argv )
 
     Ui::Form ui;
     ui.setupUi(myWidget);
-    myWidget->showFullScreen();
+
     //QMainWindow::showFullScreen();
     //TempManager tmanager(ui); .
 
@@ -152,8 +152,8 @@ int main( int argc, char **argv )
 	//connect ffc button to the thread's ffc action
 	QObject::connect(button1, SIGNAL(clicked()), thread, SLOT(performFFC()));
 	thread->start();
-	
-	myWidget->show();
+    myWidget->showFullScreen();
+    //myWidget->show();
 
 	return a.exec();
 }
