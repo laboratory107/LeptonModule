@@ -128,12 +128,12 @@ int main( int argc, char **argv )
 	//create a label, and set it's image to the placeholder
     MyLabel myLabel(ui, myWidget);
 
-	myLabel.setGeometry(10, 10, 320, 240);
+    myLabel.setGeometry(10, 10, 320*2, 240*2);
 	myLabel.setPixmap(QPixmap::fromImage(myImage));
 
 	//create a FFC button
     QPushButton *button1 = new QPushButton("Perform FFC", myWidget);
-	button1->setGeometry(320/2-50, 290-35, 100, 30);
+    button1->setGeometry(320/2-50, 240*2-35, 100, 30);
 
 
 	//create a thread to gather SPI data
