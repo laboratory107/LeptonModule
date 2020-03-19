@@ -106,7 +106,7 @@ void LeptonThread::useRangeMaxValue(uint16_t newMaxValue)
 
 void LeptonThread::run()
 {
-    lepton_connect();
+    //lepton_connect();
 	//create the initial image
 	myImage = QImage(myImageWidth, myImageHeight, QImage::Format_RGB888);
 
