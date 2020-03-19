@@ -32,5 +32,6 @@ FORMS += \
     Sucelje.ui
 
 DISTFILES += \
-    skripta.sh
+    skripta.sh \
+    user.png
 
