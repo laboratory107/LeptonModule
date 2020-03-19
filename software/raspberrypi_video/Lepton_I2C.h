@@ -3,6 +3,6 @@
 
 void lepton_perform_ffc();
 void lepton_reboot();
-void lepton_connect();
+int lepton_connect();
 
 #endif
