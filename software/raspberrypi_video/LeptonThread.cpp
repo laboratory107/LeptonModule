@@ -226,6 +226,7 @@ void LeptonThread::run()
 		QRgb color;
 		for(int iSegment = iSegmentStart; iSegment <= iSegmentStop; iSegment++) {
 			int ofsRow = 30 * (iSegment - 1);
+            //82*60
 			for(int i=0;i<FRAME_SIZE_UINT16;i++) {
 				//skip the first 2 uint16_t's of every packet, they're 4 header bytes
 				if(i % PACKET_SIZE_UINT16 < 2) {
