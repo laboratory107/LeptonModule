@@ -19,7 +19,7 @@ class LeptonThread : public QThread
   Q_OBJECT;
 
 public:
-  LeptonThread();
+  LeptonThread(QImage img);
   ~LeptonThread();
 
   void setLogLevel(uint16_t);
@@ -42,6 +42,7 @@ signals:
 private:
 
   void log_message(uint16_t, std::string);
+  QImage overlay;
   uint16_t loglevel;
   int typeColormap;
   const int *selectedColormap;

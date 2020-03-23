@@ -133,12 +133,14 @@ int main( int argc, char **argv )
 
 	//create a FFC button
     QPushButton *button1 = new QPushButton("Perform FFC", myWidget);
-    button1->setGeometry(320/2-50, 240*2-35, 100, 30);
+    button1->setGeometry(320/2-50, 240*2, 100, 30);
+    ui.overlay->setGeometry(myLabel.rect());
     ui.overlay->raise();
+    QImage img = ui.overlay->pixmap()->toImage();
 
 	//create a thread to gather SPI data
 	//when the thread emits updateImage, the label should update its image accordingly
-	LeptonThread *thread = new LeptonThread();
+    LeptonThread *thread = new LeptonThread(img);
 	thread->setLogLevel(loglevel);
 	thread->useColormap(typeColormap);
 	thread->useLepton(typeLepton);

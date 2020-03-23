@@ -12,10 +12,11 @@
 #define FRAME_SIZE_UINT16 (PACKET_SIZE_UINT16*PACKETS_PER_FRAME)
 #define FPS 27;
 
-LeptonThread::LeptonThread() : QThread()
+LeptonThread::LeptonThread(QImage img) : QThread()
 {
 	//
 	loglevel = 0;
+    this->overlay = img;
 
 	//
 	typeColormap = 3; // 1:colormap_rainbow  /  2:colormap_grayscale  /  3:colormap_ironblack(default)
@@ -247,10 +248,10 @@ void LeptonThread::run()
 
 				//
 				value = (valueFrameBuffer - minValue) * scale;
-                if(row == 10 || column ==10)
+              /*  if(row == 10 || column ==10)
                 {
                     value = 10;
-                }
+                }*/
                // emit UpdateTemperature(value);
                 int ofs_r = 3 * value + 0; if (colormapSize <= ofs_r) ofs_r = colormapSize - 1;
 				int ofs_g = 3 * value + 1; if (colormapSize <= ofs_g) ofs_g = colormapSize - 1;
