@@ -125,7 +125,7 @@ void LeptonThread::run()
 
     float avg=0;
     float total = 0;
-     QRgb pixel;
+   //  QRgb pixel;
 	while(true) {
 
 		//read data packets from lepton over SPI
@@ -272,12 +272,12 @@ void LeptonThread::run()
 					column = (i % PACKET_SIZE_UINT16) - 2;
 					row = i / PACKET_SIZE_UINT16;
 				}
-                QColor pixel(overlay.pixel(row,column));
-                 if(pixel.red() > 128 && pixel.blue() > 128 && pixel.green() > 128)
-                 {
+              //  QColor pixel(overlay.pixel(row,column));
+                // if(pixel.red() > 128 && pixel.blue() > 128 && pixel.green() > 128)
+                 /*{
                      avg += valueFrameBuffer;
                      total++;
-                 }
+                 }*/
 				myImage.setPixel(column, row, color);
 			}
 		}
