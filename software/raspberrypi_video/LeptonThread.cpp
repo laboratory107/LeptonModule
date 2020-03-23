@@ -123,6 +123,9 @@ void LeptonThread::run()
 	//open spi port
 	SpiOpenPort(0, spiSpeed);
 
+    float avg=0;
+    float total = 0;
+     QRgb pixel;
 	while(true) {
 
 		//read data packets from lepton over SPI
@@ -225,6 +228,9 @@ void LeptonThread::run()
 		uint16_t value;
 		uint16_t valueFrameBuffer;
 		QRgb color;
+        avg = 0;
+        total = 0;
+
 		for(int iSegment = iSegmentStart; iSegment <= iSegmentStop; iSegment++) {
 			int ofsRow = 30 * (iSegment - 1);
             //82*60
@@ -246,6 +252,7 @@ void LeptonThread::run()
 					break;
 				}
 
+
 				//
 				value = (valueFrameBuffer - minValue) * scale;
               /*  if(row == 10 || column ==10)
@@ -265,6 +272,12 @@ void LeptonThread::run()
 					column = (i % PACKET_SIZE_UINT16) - 2;
 					row = i / PACKET_SIZE_UINT16;
 				}
+                QColor pixel(overlay.pixel(row,column));
+                 if(pixel.red() > 128 && pixel.blue() > 128 && pixel.green() > 128)
+                 {
+                     avg += valueFrameBuffer;
+                     total++;
+                 }
 				myImage.setPixel(column, row, color);
 			}
 		}
@@ -275,7 +288,8 @@ void LeptonThread::run()
 		}
 
 		//lets emit the signal for update
-        emit UpdateTemperature(valueFrameBuffer);
+        avg = avg/total;
+        emit UpdateTemperature(avg);
 		emit updateImage(myImage);
 	}
 	
